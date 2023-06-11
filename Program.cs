@@ -32,12 +32,14 @@
 //     Medium - this gives the user six guesses.
 //     Hard - this gives the user four guesses.
 
-
+//Phase 8
+// Add a difficulty level of "Cheater" which will cause the program to continue prompting the user until they get the answer correct.
 
 Random rnd = new Random();
 string userGuess;
 string highLowMessage;
 string difficultyLevel;
+string guessesRemaining;
 int userInt;
 int secretNumber = rnd.Next(1, 100);
 int guessCount = 0;
@@ -47,6 +49,7 @@ Console.WriteLine("Choose your difficulty level:");
 Console.WriteLine("Enter 1: Easy");
 Console.WriteLine("Enter 2: Medium");
 Console.WriteLine("Enter 3: Hard");
+Console.WriteLine("Enter 999: Cheater");
 
 difficultyLevel = Console.ReadLine();
 
@@ -64,17 +67,23 @@ switch(difficultyLevel)
     maxGuesses = 4;
     break;
 
+    case "999":
+    maxGuesses = -1;
+    break;
+
     default:
-    Console.WriteLine("You entered an invalid option. Please select 1, 2, or 3.");
+    Console.WriteLine("You entered an invalid option. Please select 1, 2, 3, or 999.");
     break;
 }
 
-while(guessCount < maxGuesses)
+while(guessCount != maxGuesses)
 {
 
     try
     {
-        Console.Write($"Can you guess the secret number? You get four guesses. You have {maxGuesses - guessCount} guess(es) remaining. Please enter your guess: ");
+        guessesRemaining = maxGuesses == -1 ? "Can you guess the secret number? You have infinite guesses! Please enter your guess: " : $"Can you guess the secret number? You have {maxGuesses - guessCount} guess(es) remaining. Please enter your guess: ";
+
+        Console.Write(guessesRemaining);
 
         userGuess = Console.ReadLine();
 
