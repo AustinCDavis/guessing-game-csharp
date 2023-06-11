@@ -14,6 +14,10 @@
 // Give the user four chances to guess the number.
 // Continue to display the success or failure messages as in phase 2
 
+//Phase 4
+// Display the number of the user's current guess in the prompt. For example, if the user has already guessed one time, the prommpt should say something like Your guess (2)>.
+// End the loop early if the user guesses the correct number.
+
 string userGuess;
 int userInt;
 int secretNumber = 42;
@@ -25,15 +29,25 @@ while(guessCount <= 4)
 
     try
     {
-        Console.Write("Please guess the secret number: ");
+        Console.Write($"Can you guess the secret number? You get four guesses. You're on Guess {guessCount}. Please enter your guess:");
 
         userGuess = Console.ReadLine();
 
         userInt = int.Parse(userGuess);
 
-        message = userInt == secretNumber ? "You guessed the secret number. Good Job!" : "You failed to guess the secret number. Better luck next time loser!";
+        // message = userInt == secretNumber ? "You guessed the secret number. Good Job!" : $"You failed to guess the secret number. Better luck next time loser!";
 
-        Console.WriteLine(message);
+        // Console.WriteLine(message);
+
+        if(userInt == secretNumber)
+        {
+            Console.WriteLine("You guessed the secret number. Good Job!");
+            break;
+        }
+        else
+        {
+            Console.WriteLine("You failed to guess the secret number. Better luck next time loser!");
+        }
     }
     catch
     {
