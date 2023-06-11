@@ -18,18 +18,22 @@
 // Display the number of the user's current guess in the prompt. For example, if the user has already guessed one time, the prommpt should say something like Your guess (2)>.
 // End the loop early if the user guesses the correct number.
 
+//Phase 5
+// Use a random number between 1 and 100 instead of a hard-coded number.
+// The prompt should display the number of guesses the user has left.
+Random rnd = new Random();
 string userGuess;
-int userInt;
-int secretNumber = 42;
 string message;
-int guessCount = 1;
+int userInt;
+int secretNumber = rnd.Next(1, 100);
+int guessCount = 0;
 
-while(guessCount <= 4)
+while(guessCount < 4)
 {
 
     try
     {
-        Console.Write($"Can you guess the secret number? You get four guesses. You're on Guess {guessCount}. Please enter your guess:");
+        Console.Write($"Can you guess the secret number? You get four guesses. You have {4 - guessCount} guess(es) remaining. Please enter your guess:");
 
         userGuess = Console.ReadLine();
 
