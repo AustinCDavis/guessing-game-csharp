@@ -25,7 +25,7 @@ try
 
     message = userInt == secretNumber ? "You guessed the secret number. Good Job!" : "You failed to guess the secret number. Better luck next time loser!";
 
-    Console.WriteLine{message};
+    Console.WriteLine(message);
 }
 catch
 {
