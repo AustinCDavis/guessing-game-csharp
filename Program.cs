@@ -10,24 +10,35 @@
 // No longer display the user's guess. They know what they guessed, right?
 // Compare the user's guess with the secret number. Display a success message if the guess is correct, otherwise display a failure message.
 
+//Phase 3
+// Give the user four chances to guess the number.
+// Continue to display the success or failure messages as in phase 2
+
 string userGuess;
 int userInt;
 int secretNumber = 42;
 string message;
+int guessCount = 1;
 
-try
+while(guessCount <= 4)
 {
-    Console.Write("Please guess the secret number: ");
 
-    userGuess = Console.ReadLine();
+    try
+    {
+        Console.Write("Please guess the secret number: ");
 
-    userInt = int.Parse(userGuess);
+        userGuess = Console.ReadLine();
 
-    message = userInt == secretNumber ? "You guessed the secret number. Good Job!" : "You failed to guess the secret number. Better luck next time loser!";
+        userInt = int.Parse(userGuess);
 
-    Console.WriteLine(message);
-}
-catch
-{
-    Console.WriteLine("Hey loser, you need to input an integer!");
+        message = userInt == secretNumber ? "You guessed the secret number. Good Job!" : "You failed to guess the secret number. Better luck next time loser!";
+
+        Console.WriteLine(message);
+    }
+    catch
+    {
+        Console.WriteLine("Hey loser, you need to input an integer!");
+    }
+
+    guessCount++;
 }
