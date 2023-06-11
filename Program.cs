@@ -67,6 +67,7 @@ switch(difficultyLevel)
     maxGuesses = 4;
     break;
 
+// using -1 means the maxGuesses will never be hit on the guessCounter as it only increases
     case "999":
     maxGuesses = -1;
     break;
