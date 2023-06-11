@@ -21,9 +21,13 @@
 //Phase 5
 // Use a random number between 1 and 100 instead of a hard-coded number.
 // The prompt should display the number of guesses the user has left.
+
+//Phase 6
+// Inform the user if their guess was too high or too low, when they guess incorrectly.
+
 Random rnd = new Random();
 string userGuess;
-string message;
+string highLowMessage;
 int userInt;
 int secretNumber = rnd.Next(1, 100);
 int guessCount = 0;
@@ -33,15 +37,11 @@ while(guessCount < 4)
 
     try
     {
-        Console.Write($"Can you guess the secret number? You get four guesses. You have {4 - guessCount} guess(es) remaining. Please enter your guess:");
+        Console.Write($"Can you guess the secret number? You get four guesses. You have {4 - guessCount} guess(es) remaining. Please enter your guess: ");
 
         userGuess = Console.ReadLine();
 
         userInt = int.Parse(userGuess);
-
-        // message = userInt == secretNumber ? "You guessed the secret number. Good Job!" : $"You failed to guess the secret number. Better luck next time loser!";
-
-        // Console.WriteLine(message);
 
         if(userInt == secretNumber)
         {
@@ -50,7 +50,9 @@ while(guessCount < 4)
         }
         else
         {
-            Console.WriteLine("You failed to guess the secret number. Better luck next time loser!");
+           highLowMessage = userInt > secretNumber ? "Your guess was too high! Better luck next time loser!" : "Your guess was too low! Better luck next time loser!";
+           
+           Console.WriteLine(highLowMessage);
         }
     }
     catch
