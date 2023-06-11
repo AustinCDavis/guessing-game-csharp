@@ -25,19 +25,56 @@
 //Phase 6
 // Inform the user if their guess was too high or too low, when they guess incorrectly.
 
+//Phase 7
+// Prompt the user for a difficulty level before they are prompted to guess the number.
+// The difficulty level should determine how many guesses the user gets. The difficulty levels should be:
+//     Easy - this gives the user eight guesses.
+//     Medium - this gives the user six guesses.
+//     Hard - this gives the user four guesses.
+
+
+
 Random rnd = new Random();
 string userGuess;
 string highLowMessage;
+string difficultyLevel;
 int userInt;
 int secretNumber = rnd.Next(1, 100);
 int guessCount = 0;
+int maxGuesses = 0;
 
-while(guessCount < 4)
+Console.WriteLine("Choose your difficulty level:");
+Console.WriteLine("Enter 1: Easy");
+Console.WriteLine("Enter 2: Medium");
+Console.WriteLine("Enter 3: Hard");
+
+difficultyLevel = Console.ReadLine();
+
+switch(difficultyLevel)
+{
+    case "1":
+    maxGuesses = 8;
+    break;
+
+    case "2":
+    maxGuesses = 6;
+    break;
+
+    case "3":
+    maxGuesses = 4;
+    break;
+
+    default:
+    Console.WriteLine("You entered an invalid option. Please select 1, 2, or 3.");
+    break;
+}
+
+while(guessCount < maxGuesses)
 {
 
     try
     {
-        Console.Write($"Can you guess the secret number? You get four guesses. You have {4 - guessCount} guess(es) remaining. Please enter your guess: ");
+        Console.Write($"Can you guess the secret number? You get four guesses. You have {maxGuesses - guessCount} guess(es) remaining. Please enter your guess: ");
 
         userGuess = Console.ReadLine();
 
